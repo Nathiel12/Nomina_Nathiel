@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="786.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.nathiel.nomina.NominaController">
+  <tabs>
+    <Tab fx:id="PaginaRegistro" onSelectionChanged="#OnClickTabRegistro" text="Registro">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="444.0" prefWidth="615.0">
+               <children>
+                  <Label layoutX="438.0" layoutY="435.0" text="Seleccionar el banco:" />
+                  <TextField fx:id="Nombre" layoutX="235.0" layoutY="37.0" onAction="#TFNombre" />
+                  <TextField fx:id="Apellido" layoutX="235.0" layoutY="86.0" onAction="#TFApellido" />
+                  <TextField fx:id="Cedula" layoutX="234.0" layoutY="188.0" onAction="#TFCedula" />
+                  <TextField fx:id="Cargo" layoutX="234.0" layoutY="242.0" onAction="#TFCargo" />
+                  <TextField fx:id="Salario" layoutX="234.0" layoutY="292.0" onAction="#TFSalario" />
+                  <Button fx:id="Registrar" layoutX="118.0" layoutY="578.0" mnemonicParsing="false" onAction="#OnClickRegistrar" text="Registrar Empleado" />
+                  <Label layoutX="156.0" layoutY="41.0" text="Nombre" />
+                  <Label layoutX="156.0" layoutY="90.0" text="Apellido" />
+                  <Label layoutX="144.0" layoutY="192.0" text="ID Empleado" />
+                  <Label layoutX="162.0" layoutY="246.0" text="Cargo" />
+                  <Label layoutX="160.0" layoutY="296.0" text="Salario" />
+                  <Button fx:id="Limpiar" layoutX="437.0" layoutY="578.0" mnemonicParsing="false" onAction="#OnClickLimpiar" text="Limpiar" />
+                  <ComboBox fx:id="Banco" layoutX="518.0" layoutY="477.0" onAction="#OnClickBancos" prefWidth="150.0" />
+                  <Label layoutX="127.0" layoutY="139.0" text="Numero de Cuenta" />
+                  <TextField fx:id="NumeroCuenta" layoutX="235.0" layoutY="135.0" onAction="#TFNumeroCuenta" />
+                  <ComboBox fx:id="Forma_Contacto" layoutX="518.0" layoutY="135.0" prefWidth="150.0" />
+                  <ComboBox fx:id="Tipo_Cuenta" layoutX="518.0" layoutY="301.0" prefWidth="150.0" />
+                  <Label layoutX="478.0" layoutY="78.0" />
+                  <TextField fx:id="CodigoEmpleado" layoutX="234.0" layoutY="347.0" />
+                  <TextField fx:id="Telefono" layoutX="234.0" layoutY="396.0" />
+                  <TextField fx:id="Email" layoutX="235.0" layoutY="452.0" />
+                  <TextField fx:id="Fax" layoutX="234.0" layoutY="506.0" />
+                  <Label layoutX="130.0" layoutY="351.0" text="Codigo Empleado" />
+                  <Label layoutX="154.0" layoutY="400.0" text="Telefono" />
+                  <Label layoutX="164.0" layoutY="456.0" text="Email" />
+                  <Label layoutX="170.0" layoutY="510.0" text="Fax" />
+                  <Label layoutX="442.0" layoutY="87.0" text="Forma de Contacto" />
+                  <Label layoutX="452.0" layoutY="259.0" text="Tipo de Cuenta" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab fx:id="PaginaConsultar" onSelectionChanged="#OnClickTabConsultar" text="Consultar Nomina">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="TableViewEmpleado" layoutX="-1.0" layoutY="-1.0" prefHeight="632.0" prefWidth="786.0">
+                    <columns>
+                      <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
+                      <TableColumn fx:id="colApellido" prefWidth="75.0" text="Apellido" />
+                        <TableColumn fx:id="colCargo" prefWidth="75.0" text="Cargo" />
+                        <TableColumn fx:id="colCedula" prefWidth="75.0" text="Cedula" />
+                        <TableColumn fx:id="colBanco" prefWidth="75.0" text="Banco" />
+                        <TableColumn fx:id="colSalarioBR" prefWidth="75.0" text="Salario Bruto" />
+                        <TableColumn fx:id="colISR" prefWidth="75.0" text="ISR" />
+                        <TableColumn fx:id="colSFS" prefWidth="75.0" text="SFS" />
+                        <TableColumn fx:id="colSalarioNeto" prefWidth="75.0" text="Salario Neto" />
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>
