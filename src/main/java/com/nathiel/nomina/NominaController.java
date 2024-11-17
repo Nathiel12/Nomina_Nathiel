@@ -13,7 +13,9 @@ public class NominaController {
 
     private GuardarEmpleado Archivo= new GuardarEmpleado("data/Empleados.json");
     private ObservableList<Empleado> empleadosObservable = FXCollections.observableArrayList();
-    private double salarioNeto;
+    private static final double tramoExtento = 416220.0 / 12;
+    private static final double tramo1 = 624329.0 / 12;
+    private static final double tramo2 = 867123.0 / 12;
 
     @FXML
     private TableView<Empleado> TableViewEmpleado;
@@ -129,6 +131,11 @@ public class NominaController {
 
         String bancoSeleccionado = Banco.getSelectionModel().getSelectedItem();
 
+        double salarioBase = Double.parseDouble(Salario.getText());
+        double afp= salarioBase*0.287;
+        double sfs= salarioBase*0.0304;
+        double salarioNetoCalculado = salarioBase -(afp+sfs+calcularISR(salarioBase));
+
         Empleado nuevoEmpleado = new Empleado(
         Nombre.getText(),
         Cedula.getText(),
@@ -136,7 +143,7 @@ public class NominaController {
         Cargo.getText(),
         Apellido.getText(),
         bancoSeleccionado,
-        salarioNeto,
+        salarioNetoCalculado,
         NumeroCuenta.getText(),
         Email.getText(),
         Telefono.getText(),
@@ -204,5 +211,15 @@ public class NominaController {
         colBanco.setCellValueFactory(new PropertyValueFactory<>("banco"));
 
         TableViewEmpleado.setItems(empleadosObservable);
+    }
+    public double calcularISR(double salario){
+        if(salario<=tramoExtento){
+            return 0;
+        }else if(salario <= tramo1){
+            return (salario - tramoExtento)*0.15;
+        }else if(salario <= tramo2){
+            return (31216.0/12) + (salario-tramo1)*0.20;
+        }else
+            return (79776.0/12)+(salario-tramo2)*0.25;
     }
 }
